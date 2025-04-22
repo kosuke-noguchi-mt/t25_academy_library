@@ -5,12 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import io.micrometer.common.util.StringUtils;
+import jp.co.metateam.library.model.Account;
+import jp.co.metateam.library.model.AccountDto;
 import jp.co.metateam.library.model.BookMst;
 import jp.co.metateam.library.model.BookMstDto;
 import jp.co.metateam.library.repository.BookMstRepository;
@@ -24,6 +28,9 @@ public class BookMstService {
     public BookMstService(BookMstRepository bookMstRepository){
         this.bookMstRepository = bookMstRepository;
     }
+    public int selectByIsbn(String isbn) {
+        return this.bookMstRepository.selectByIsbn(isbn);
+    }
     
     public List<BookMstDto> findAvailableWithStockCount() {
         List<BookMst> books = this.bookMstRepository.findLimitedBook();
@@ -34,15 +41,35 @@ public class BookMstService {
         for (int i = 0; i < books.size(); i++) {
             BookMst book = books.get(i);
             BookMstDto bookMstDto = new BookMstDto();
-            bookMstDto.setId(book.getId());
-            bookMstDto.setIsbn(book.getIsbn());
-            bookMstDto.setTitle(book.getTitle());
+            bookMstDto.setId(bookMstDto.getId());
+            bookMstDto.setIsbn(bookMstDto.getIsbn());
+            bookMstDto.setTitle(bookMstDto.getTitle());
             bookMstDtoList.add(bookMstDto);
         }
 
         return bookMstDtoList;
     }
-    
+
+
+
+
+   
+
+    public void save(BookMstDto bookMstDto) {
+        try {
+            // AccountDtoからAccountへの変換
+            BookMst bookMst = new BookMst();
+
+            bookMst.setIsbn(bookMstDto.getIsbn());
+            bookMst.setTitle(bookMstDto.getTitle());
+            
+
+            // データベースへの保存
+            this.bookMstRepository.save(bookMst);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }
 
 

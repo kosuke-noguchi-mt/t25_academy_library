@@ -69,11 +69,16 @@ public class RegisterController {
             return "redirect:login";
         } catch (Exception e) {
             log.error(e.getMessage());
+            
 
             ra.addFlashAttribute("accountDto", accountDto);
             ra.addFlashAttribute("org.springframework.validation.BindingResult.accountDto", result);
 
             return "redirect:register";
+
+            
+              
+        
         }
     }
 }

@@ -24,8 +24,6 @@ public class LoginController {
         }
         return "redirect:/login";
     }
-　　//testコメント
-    //testコメント
 }
 
 
