@@ -18,19 +18,24 @@
                     <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}" method="post">
                         <div class="mb30 flexarea">
                             <span>
-                                <p>＊は必須項目です<p></p> <a th:href="@{/book/index}" class="link">← 一覧へ戻る</a>
+                                <p>
+                                    <font color="red">＊は必須項目です</font>
                             </span>
-                            
-                                <p>書籍名<p>
-                                    <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}" method="POST">
-                                    <input type="text" name='title' th:field="*{title}" placeholder="書籍名を入力"><br><br>
-                                    <div class="error_msg" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
-                                    <p>ISBN<p>
-                                        <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}" method="POST"></form>
-                                        <input type="text" name='isbn' th:field="*{isbn}"placeholder="ISBN"><br><br>
-                                        <div class="error_msg" th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></div>
-                                    <p>
-                                        <input type="submit" value="保存">
+                            <p>書籍名<font color="red">*</font>
+                            <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}"
+                                method="POST">
+                                <p>
+                                <input type="text" style="width: 900px;" name='title' th:field="*{title}" placeholder="書籍名を入力"><br><br>
+                                <div class="error_msg" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+                                <p>ISBN<font color="red">*</font>
+                                <p>
+                                <input type="text" style="width: 900px;" name='isbn' th:field="*{isbn}" placeholder="ISBN"><br><br>
+                                <div class="error_msg" th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></div>
+                                <p>
+                                    <input type="submit" value="保存" style="text-align: center;"
+                                        style="background-color: rgb(163, 230, 207);  border: none; border-radius: 5px;">
+                                <p> 
+                                    <a th:href="@{/book/index}" class="link">← 一覧へ戻る</a>
                         </div>
                     </form>
                 </div>

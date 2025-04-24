@@ -45,7 +45,7 @@ public class BookController {
     }
 
     @GetMapping("/book/add")
-    public String addFrom(Model model) {
+    public String add(Model model) {
         if (!model.containsAttribute("bookMstDto")) {
             model.addAttribute("bookMstDto", new BookMstDto());
         }
@@ -56,13 +56,13 @@ public class BookController {
 
     //新しく
     @PostMapping("/book/add")
-     public <bookMSTDto>String book_add(@Valid @ModelAttribute BookMstDto bookMstDto, BindingResult result, RedirectAttributes ra) {
+     public String book_add(@Valid @ModelAttribute BookMstDto bookMstDto, BindingResult result, RedirectAttributes ra) {
         try {
             boolean errtitleFlg = false;
             boolean errIsbnFlg = false;
             String title = bookMstDto.getTitle();
             String isbn = bookMstDto.getIsbn();
-            int isbnExist = this.bookMstService.selectByIsbn(isbn);
+        
             
             if(title == null || String.valueOf(title).length() == 0 ){
                 result.rejectValue("title","error.value","書籍名は必須です");
@@ -87,6 +87,8 @@ public class BookController {
                 result.rejectValue("isbn","error.value","ISBNは半角数字で入力してください");
                 errIsbnFlg = true;
             }
+            
+            int isbnExist = this.bookMstService.selectByIsbn(isbn);
             
             if(isbnExist >= 1){
                 result.rejectValue("isbn", "error.value", "登録済みのISBNです");
