@@ -16,10 +16,22 @@
                 <div class="page_title">書籍登録</div>
                 <div class="page_contents">
                     <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}" method="post">
-                        <div class="mb30 flexarea">
-                            <span>
-                                <a th:href="@{/book/index}" class="link">← 一覧へ戻る</a>
-                            </span>
+                        <div class="mb30 flexarea" style="display: flex; flex-direction: column;">
+                            <span class="text-red">＊は必須項目です</span>
+                            <a href="/book/index" class="link" style="align-self: flex-end;">← 一覧へ戻る</a>
+                            <p >書籍名<span class="text-red asterrisk">*</span></p>
+                                <!-- <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}" method="POST"> -->
+                                <input class="form_input" id="title" type="text" name='title' th:field="*{title}" placeholder="書籍名を入力"><br><br>
+                                <div class="error_msg" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+                                <p>ISBN<span class="text-red asterrisk">*</span></p>
+                                    <!-- <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}" method="POST"></form> -->
+                                    <input class="form_input" id="isbn" type="text" name='isbn' th:field="*{isbn}"placeholder="ISBNを入力"><br><br>
+                                    <div class="error_msg" th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></div>
+                                    <div class="btn_block">
+                                        <input type="submit" value="保存" style="background-color: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 5px;">
+                                    </div>
+                                    
+                                
                         </div>
                     </form>
                 </div>

@@ -23,7 +23,6 @@ label {
     height: 45px;
     font-size: 20px;
     background-color: #9CF2D3;
-    color: #545454;
-    border-radius: 0.5rem;
+    color: #9CF2D3 0.5rem;
     border: none;
 }
