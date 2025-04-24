@@ -87,6 +87,10 @@ public class BookController {
                 result.rejectValue("isbn","error.value","ISBNは半角数字で入力してください");
                 errIsbnFlg = true;
             }
+
+            if(result.hasErrors()){
+                return "book/add";
+            }
             
             int isbnExist = this.bookMstService.selectByIsbn(isbn);
 
