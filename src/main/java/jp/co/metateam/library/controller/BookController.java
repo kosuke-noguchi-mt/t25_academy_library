@@ -89,7 +89,7 @@ public class BookController {
             }
             
             int isbnExist = this.bookMstService.selectByIsbn(isbn);
-            
+
             if(isbnExist >= 1){
                 result.rejectValue("isbn", "error.value", "登録済みのISBNです");
                 errIsbnFlg = true;
@@ -107,7 +107,7 @@ public class BookController {
             ra.addFlashAttribute("bookMstDto", bookMstDto);
             ra.addFlashAttribute("org.springframework.validation.BindingResult.bookMstDto", result);
 
-            return "redirect:/book/add";
+            return "book/add";
         
         }
     }

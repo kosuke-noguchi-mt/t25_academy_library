@@ -17,7 +17,6 @@ public class BookMstDto {
     
     private Long id; 
 
-    
     private String isbn;
     
     private String title;
