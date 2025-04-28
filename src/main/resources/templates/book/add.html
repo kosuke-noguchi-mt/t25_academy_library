@@ -18,7 +18,7 @@
                     <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}" method="post">
                         <div class="mb30 flexarea" style="display: flex; flex-direction: column;">
                             <span class="text-red">＊は必須項目です</span>
-                            <a href="/book/index" class="link" style="align-self: flex-end;">← 一覧へ戻る</a>
+                            <a href="/mt_library/book/index" class="link" style="align-self: flex-end;">← 一覧へ戻る</a>
                             <p >書籍名<span class="text-red asterrisk">*</span></p>
                                 <!-- <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}" method="POST"> -->
                                 <input class="form_input" id="title" type="text" name='title' th:field="*{title}" placeholder="書籍名を入力"><br><br>

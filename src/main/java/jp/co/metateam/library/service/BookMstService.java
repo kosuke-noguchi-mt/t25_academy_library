@@ -41,9 +41,9 @@ public class BookMstService {
         for (int i = 0; i < books.size(); i++) {
             BookMst book = books.get(i);
             BookMstDto bookMstDto = new BookMstDto();
-            bookMstDto.setId(bookMstDto.getId());
-            bookMstDto.setIsbn(bookMstDto.getIsbn());
-            bookMstDto.setTitle(bookMstDto.getTitle());
+            bookMstDto.setId(book.getId());
+            bookMstDto.setIsbn(book.getIsbn());
+            bookMstDto.setTitle(book.getTitle());
             bookMstDtoList.add(bookMstDto);
         }
 

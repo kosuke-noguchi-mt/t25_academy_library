@@ -12,6 +12,38 @@
             <div th:replace="~{common :: header}"></div>
             <div class="inner_contens">
                 <div class="page_title">書籍一覧</div>
+                <a href="/mt_library/book/add" class = "btn_block" style="display: block; text-align: right;"> 
+                    <input type="submit" value="書籍登録" 
+                        style="background-color: #3db6a4;
+                                 color: white; border: none; padding: 8px 16px; border-radius: 5px;"></a>
+                
+                <style>
+                    .books_table {
+                        table-layout: auto;
+                        width: auto;
+                        border-collapse: collapse;
+                        margin: 0 auto;
+                    }
+                    .books_table th, .books_table td {
+                        border: 1px solid #aaa;
+                        padding: 4px 4px;
+                        font-size: 14px ;
+                    }
+                    </style>
+                <table class = "books_table">
+                    <thead>
+                        <tr>
+                            <th>書籍名</th>
+                            <th>ISBN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        <tr th:each="bookMst : ${bookMstList}">
+                            <td th:text="${bookMst.title}">書籍タイトル</td>
+                            <td th:text="${bookMst.isbn}">ISBNコード</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
